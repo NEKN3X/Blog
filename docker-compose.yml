@@ -6,6 +6,7 @@ services:
     hostname: $DB_HOSTNAME
     ports:
       - $DB_PORT:5432
+    tty: true
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     environment:
@@ -16,7 +17,8 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
-    container_name: blog_app
+    container_name: $APP_HOSTNAME
+    hostname: $APP_HOSTNAME
     ports:
       - $APP_PORT:3000
     tty: true
@@ -24,4 +26,28 @@ services:
       - ./app:/usr/app
     working_dir: /usr/app
     command: $APP_CMD
+    env_file: .env
+  nexus:
+    image: node:12
+    container_name: $NEXUS_HOSTNAME
+    hostname: $NEXUS_HOSTNAME
+    ports:
+      - $NEXUS_PORT:4000
+    tty: true
+    volumes:
+      - ./app:/usr/app
+    working_dir: /usr/app
+    command: $NEXUS_CMD
+    env_file: .env
+  codegen:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: $CODEGEN_HOSTNAME
+    hostname: $CODEGEN_HOSTNAME
+    tty: true
+    volumes:
+      - ./app:/usr/app
+    working_dir: /usr/app
+    command: $CODEGEN_CMD
     env_file: .env

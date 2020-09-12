@@ -7,7 +7,8 @@
     "dev:nexus": "npx nexus dev",
     "build": "next build",
     "start": "next start",
-    "migrate": "npx prisma migrate up --experimental"
+    "migrate": "npx prisma migrate up --experimental",
+    "codegen": "npx graphql-codegen --watch"
   },
   "dependencies": {
     "graphql-tag": "^2.11.0",
@@ -22,6 +23,10 @@
     "urql": "^1.10.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.17.8",
+    "@graphql-codegen/typescript": "^1.17.9",
+    "@graphql-codegen/typescript-operations": "^1.17.8",
+    "@graphql-codegen/typescript-urql": "^2.0.1",
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
