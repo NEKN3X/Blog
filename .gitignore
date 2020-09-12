@@ -1,3 +1,6 @@
+# local PostgreSQL data
+pgdata
+
 # Logs
 logs
 *.log
