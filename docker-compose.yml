@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   db:
-    image: "postgres:12"
+    image: postgres:12
     container_name: $DB_HOSTNAME
     hostname: $DB_HOSTNAME
     ports:
@@ -12,3 +12,16 @@ services:
       - POSTGRES_USER=alice
       - POSTGRES_PASSWORD=wonderland
       - POSTGRES_DB=blogdb
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    container_name: blog_front
+    ports:
+      - $FRONT_PORT:3000
+    tty: true
+    volumes:
+      - ./front:/usr/app
+    working_dir: /usr/app
+    command: $FRONT_CMD
+    env_file: .env
