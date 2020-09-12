@@ -25,14 +25,3 @@ services:
     working_dir: /usr/app
     command: $APP_CMD
     env_file: .env
-  nexus:
-    image: node:12
-    container_name: blog_server
-    ports:
-      - $SERVER_PORT:4000
-    tty: true
-    volumes:
-      - ./app:/usr/app
-    working_dir: /usr/app
-    command: $SERVER_CMD
-    env_file: .env
