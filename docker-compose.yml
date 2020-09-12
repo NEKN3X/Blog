@@ -12,16 +12,16 @@ services:
       - POSTGRES_USER=alice
       - POSTGRES_PASSWORD=wonderland
       - POSTGRES_DB=blogdb
-  front:
+  app:
     build:
-      context: ./front
+      context: ./app
       dockerfile: Dockerfile
-    container_name: blog_front
+    container_name: blog_app
     ports:
-      - $FRONT_PORT:3000
+      - $APP_PORT:3000
     tty: true
     volumes:
-      - ./front:/usr/app
+      - ./app:/usr/app
     working_dir: /usr/app
-    command: $FRONT_CMD
+    command: $APP_CMD
     env_file: .env
