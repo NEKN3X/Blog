@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "type-check": "tsc",
-    "dev": "concurrently -r \"npx nexus dev\" \"npx next\" \"npx graphql-codegen --watch\"",
+    "dev": "concurrently -r \"npx nexus dev\" \"npx next\"",
     "build": "next build",
     "start": "next start",
     "migrate": "npx prisma migrate up --experimental",

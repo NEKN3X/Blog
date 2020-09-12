@@ -1,5 +1,5 @@
 overwrite: true
-schema: 'http://${NEXUS_HOSTNAME}:${NEXUS_PORT}/graphql' # GraphQL endpoint via the nexus dev server
+schema: 'http://localhost:4000/graphql' # GraphQL endpoint via the nexus dev server
 documents: 'graphql/**/*.graphql.ts' # parse graphql operations in matching files
 generates:
   generated/graphql.tsx: # location for generated types, hooks and components
@@ -10,3 +10,6 @@ generates:
     config:
       withComponent: false # we'll use Urql client with hooks instead
       withHooks: true
+hooks:
+  afterOneFileWrite:
+    - prettier --write
