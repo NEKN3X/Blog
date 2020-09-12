@@ -1,27 +1,8 @@
 import React from 'react'
-import gql from 'graphql-tag'
-import { useQuery } from 'urql'
-
-type AllUsersData = {
-  allUsers: {
-    id: string
-    name: string
-  }[]
-}
-
-const AllUsersQuery = gql`
-  query {
-    allUsers {
-      id
-      name
-    }
-  }
-`
+import { useAllUsersQuery } from '../generated/graphql'
 
 const AllUsers: React.FC = () => {
-  const [result] = useQuery<AllUsersData>({
-    query: AllUsersQuery,
-  })
+  const [result] = useAllUsersQuery()
   const { data, fetching, error } = result
 
   if (fetching) return <p>Loading...</p>
@@ -29,9 +10,9 @@ const AllUsers: React.FC = () => {
 
   return (
     <div>
-      <p>There are {data?.allUsers.length} user(s) in the database:</p>
+      <p>There are {data?.allUsers?.length} user(s) in the database:</p>
       <ul>
-        {data?.allUsers.map((user) => (
+        {data?.allUsers?.map((user) => (
           <li key={user.id}>{user.name}</li>
         ))}
       </ul>

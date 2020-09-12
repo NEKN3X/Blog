@@ -21,33 +21,10 @@ services:
     hostname: $APP_HOSTNAME
     ports:
       - $APP_PORT:3000
-    tty: true
-    volumes:
-      - ./app:/usr/app
-    working_dir: /usr/app
-    command: $APP_CMD
-    env_file: .env
-  nexus:
-    image: node:12
-    container_name: $NEXUS_HOSTNAME
-    hostname: $NEXUS_HOSTNAME
-    ports:
       - $NEXUS_PORT:4000
     tty: true
     volumes:
       - ./app:/usr/app
     working_dir: /usr/app
-    command: $NEXUS_CMD
-    env_file: .env
-  codegen:
-    build:
-      context: ./app
-      dockerfile: Dockerfile
-    container_name: $CODEGEN_HOSTNAME
-    hostname: $CODEGEN_HOSTNAME
-    tty: true
-    volumes:
-      - ./app:/usr/app
-    working_dir: /usr/app
-    command: $CODEGEN_CMD
+    command: $APP_CMD
     env_file: .env

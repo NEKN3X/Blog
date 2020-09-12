@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "type-check": "tsc",
-    "dev:next": "next",
-    "dev:nexus": "npx nexus dev",
+    "dev": "concurrently -r \"npx nexus dev\" \"npx next\" \"npx graphql-codegen --watch\"",
     "build": "next build",
     "start": "next start",
     "migrate": "npx prisma migrate up --experimental",
@@ -30,6 +29,7 @@
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "concurrently": "^5.3.0",
     "typescript": "4.0"
   },
   "license": "MIT"
