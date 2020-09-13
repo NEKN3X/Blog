@@ -1,13 +1,12 @@
 {
-  "name": "with-typescript",
+  "name": "app",
   "version": "1.0.0",
   "scripts": {
     "type-check": "tsc",
-    "dev": "concurrently -r \"npx nexus dev\" \"npx next\"",
+    "dev": "concurrently -r \"npx next\" \"npm run generate:codegen\"",
+    "generate:codegen": "npx graphql-codegen --watch",
     "build": "next build",
-    "start": "next start",
-    "migrate": "npx prisma migrate up --experimental",
-    "codegen": "npx graphql-codegen --watch"
+    "start": "next start"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
@@ -15,8 +14,6 @@
     "isomorphic-unfetch": "^3.0.0",
     "next": "latest",
     "next-urql": "^1.1.0",
-    "nexus": "^0.26.1",
-    "nexus-plugin-prisma": "^0.18.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-is": "^16.13.1",

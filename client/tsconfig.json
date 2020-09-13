@@ -18,8 +18,7 @@
     "strict": true,
     "target": "esnext",
     "rootDir": ".",
-    "typeRoots": ["node_modules/@types", "types"],
-    "plugins": [{ "name": "nexus/typescript-language-service" }]
+    "typeRoots": ["types"]
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx", ".", "types.d.ts"]

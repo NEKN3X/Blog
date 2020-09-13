@@ -1,6 +1,6 @@
 overwrite: true
-schema: 'http://localhost:4000/graphql' # GraphQL endpoint via the nexus dev server
-documents: 'graphql/**/*.graphql.ts' # parse graphql operations in matching files
+schema: 'http://${SERVER_HOSTNAME}:${SERVER_PORT}/graphql' # GraphQL endpoint via the nexus dev server
+documents: 'src/graphql/**/*.graphql.ts' # parse graphql operations in matching files
 generates:
   generated/graphql.tsx: # location for generated types, hooks and components
     plugins:

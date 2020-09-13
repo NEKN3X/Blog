@@ -13,18 +13,31 @@ services:
       - POSTGRES_USER=$POSTGRES_USER
       - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
       - POSTGRES_DB=$POSTGRES_DB
-  app:
+  client:
     build:
-      context: ./app
+      context: ./client
       dockerfile: Dockerfile
-    container_name: $APP_HOSTNAME
-    hostname: $APP_HOSTNAME
+    container_name: $CLIENT_HOSTNAME
+    hostname: $CLIENT_HOSTNAME
     ports:
-      - $APP_PORT:3000
-      - $NEXUS_PORT:4000
+      - $CLIENT_PORT:3000
     tty: true
     volumes:
-      - ./app:/usr/app
+      - ./client:/usr/app
     working_dir: /usr/app
-    command: $APP_CMD
+    command: $CLIENT_CMD
+    env_file: .env
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: $SERVER_HOSTNAME
+    hostname: $SERVER_HOSTNAME
+    ports:
+      - $SERVER_PORT:4000
+    tty: true
+    volumes:
+      - ./server:/usr/app
+    working_dir: /usr/app
+    command: $SERVER_CMD
     env_file: .env

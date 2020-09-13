@@ -9,7 +9,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../styles/theme'
 
 // the URL to /api/graphql
-const GRAPHQL_ENDPOINT = `http://localhost:3000/api/graphql`
+const GRAPHQL_ENDPOINT = `http://${process.env.SERVER_HOSTNAME}:${process.env.SERVER_PORT}/graphql`
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
