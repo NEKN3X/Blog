@@ -14,6 +14,57 @@ export type Scalars = {
   Float: number
 }
 
+export type BatchPayload = {
+  __typename?: 'BatchPayload'
+  count: Scalars['Int']
+}
+
+export type Mutation = {
+  __typename?: 'Mutation'
+  bigRedButton: Scalars['String']
+  createOneUser: User
+  deleteOneUser?: Maybe<User>
+  deleteManyUser: BatchPayload
+  updateOneUser?: Maybe<User>
+  updateManyUser: BatchPayload
+}
+
+export type MutationCreateOneUserArgs = {
+  data: UserCreateInput
+}
+
+export type MutationDeleteOneUserArgs = {
+  where: UserWhereUniqueInput
+}
+
+export type MutationDeleteManyUserArgs = {
+  where?: Maybe<UserWhereInput>
+}
+
+export type MutationUpdateOneUserArgs = {
+  data: UserUpdateInput
+  where: UserWhereUniqueInput
+}
+
+export type MutationUpdateManyUserArgs = {
+  data: UserUpdateManyMutationInput
+  where?: Maybe<UserWhereInput>
+}
+
+export type NestedStringFilter = {
+  equals?: Maybe<Scalars['String']>
+  in?: Maybe<Array<Scalars['String']>>
+  notIn?: Maybe<Array<Scalars['String']>>
+  lt?: Maybe<Scalars['String']>
+  lte?: Maybe<Scalars['String']>
+  gt?: Maybe<Scalars['String']>
+  gte?: Maybe<Scalars['String']>
+  contains?: Maybe<Scalars['String']>
+  startsWith?: Maybe<Scalars['String']>
+  endsWith?: Maybe<Scalars['String']>
+  not?: Maybe<NestedStringFilter>
+}
+
 export type Query = {
   __typename?: 'Query'
   allUsers: Array<User>
@@ -32,10 +83,51 @@ export type QueryUsersArgs = {
   after?: Maybe<UserWhereUniqueInput>
 }
 
+export type StringFieldUpdateOperationsInput = {
+  set?: Maybe<Scalars['String']>
+}
+
+export type StringFilter = {
+  equals?: Maybe<Scalars['String']>
+  in?: Maybe<Array<Scalars['String']>>
+  notIn?: Maybe<Array<Scalars['String']>>
+  lt?: Maybe<Scalars['String']>
+  lte?: Maybe<Scalars['String']>
+  gt?: Maybe<Scalars['String']>
+  gte?: Maybe<Scalars['String']>
+  contains?: Maybe<Scalars['String']>
+  startsWith?: Maybe<Scalars['String']>
+  endsWith?: Maybe<Scalars['String']>
+  not?: Maybe<NestedStringFilter>
+}
+
 export type User = {
   __typename?: 'User'
   id: Scalars['String']
   name: Scalars['String']
+}
+
+export type UserCreateInput = {
+  id?: Maybe<Scalars['String']>
+  name: Scalars['String']
+}
+
+export type UserUpdateInput = {
+  id?: Maybe<StringFieldUpdateOperationsInput>
+  name?: Maybe<StringFieldUpdateOperationsInput>
+}
+
+export type UserUpdateManyMutationInput = {
+  id?: Maybe<StringFieldUpdateOperationsInput>
+  name?: Maybe<StringFieldUpdateOperationsInput>
+}
+
+export type UserWhereInput = {
+  AND?: Maybe<Array<UserWhereInput>>
+  OR?: Maybe<Array<UserWhereInput>>
+  NOT?: Maybe<Array<UserWhereInput>>
+  id?: Maybe<StringFilter>
+  name?: Maybe<StringFilter>
 }
 
 export type UserWhereUniqueInput = {
