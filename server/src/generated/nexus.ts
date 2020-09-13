@@ -3,14 +3,12 @@
  * Do not make changes to this file directly
  */
 
-import * as Context from "../context"
-
-
+import * as Context from "../context";
 
 declare global {
   interface NexusGenCustomOutputProperties<TypeName extends string> {
-    crud: NexusPrisma<TypeName, 'crud'>
-    model: NexusPrisma<TypeName, 'model'>
+    crud: NexusPrisma<TypeName, "crud">;
+    model: NexusPrisma<TypeName, "model">;
   }
 }
 
@@ -19,73 +17,193 @@ declare global {
 }
 
 export interface NexusGenInputs {
-  UserWhereUniqueInput: { // input type
+  NestedStringFilter: {
+    // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: string[] | null; // [String!]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: NexusGenInputs["NestedStringFilter"] | null; // NestedStringFilter
+    notIn?: string[] | null; // [String!]
+    startsWith?: string | null; // String
+  };
+  StringFieldUpdateOperationsInput: {
+    // input type
+    set?: string | null; // String
+  };
+  StringFilter: {
+    // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: string[] | null; // [String!]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: NexusGenInputs["NestedStringFilter"] | null; // NestedStringFilter
+    notIn?: string[] | null; // [String!]
+    startsWith?: string | null; // String
+  };
+  UserCreateInput: {
+    // input type
     id?: string | null; // String
-  }
+    name: string; // String!
+  };
+  UserUpdateInput: {
+    // input type
+    id?: NexusGenInputs["StringFieldUpdateOperationsInput"] | null; // StringFieldUpdateOperationsInput
+    name?: NexusGenInputs["StringFieldUpdateOperationsInput"] | null; // StringFieldUpdateOperationsInput
+  };
+  UserUpdateManyMutationInput: {
+    // input type
+    id?: NexusGenInputs["StringFieldUpdateOperationsInput"] | null; // StringFieldUpdateOperationsInput
+    name?: NexusGenInputs["StringFieldUpdateOperationsInput"] | null; // StringFieldUpdateOperationsInput
+  };
+  UserWhereInput: {
+    // input type
+    AND?: NexusGenInputs["UserWhereInput"][] | null; // [UserWhereInput!]
+    id?: NexusGenInputs["StringFilter"] | null; // StringFilter
+    name?: NexusGenInputs["StringFilter"] | null; // StringFilter
+    NOT?: NexusGenInputs["UserWhereInput"][] | null; // [UserWhereInput!]
+    OR?: NexusGenInputs["UserWhereInput"][] | null; // [UserWhereInput!]
+  };
+  UserWhereUniqueInput: {
+    // input type
+    id?: string | null; // String
+  };
 }
 
-export interface NexusGenEnums {
-}
+export interface NexusGenEnums {}
 
 export interface NexusGenScalars {
-  String: string
-  Int: number
-  Float: number
-  Boolean: boolean
-  ID: string
+  String: string;
+  Int: number;
+  Float: number;
+  Boolean: boolean;
+  ID: string;
 }
 
 export interface NexusGenRootTypes {
+  BatchPayload: {
+    // root type
+    count: number; // Int!
+  };
+  Mutation: {};
   Query: {};
-  User: { // root type
+  User: {
+    // root type
     id: string; // String!
     name: string; // String!
-  }
+  };
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
-  UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
-  String: NexusGenScalars['String'];
-  Int: NexusGenScalars['Int'];
-  Float: NexusGenScalars['Float'];
-  Boolean: NexusGenScalars['Boolean'];
-  ID: NexusGenScalars['ID'];
+  NestedStringFilter: NexusGenInputs["NestedStringFilter"];
+  StringFieldUpdateOperationsInput: NexusGenInputs["StringFieldUpdateOperationsInput"];
+  StringFilter: NexusGenInputs["StringFilter"];
+  UserCreateInput: NexusGenInputs["UserCreateInput"];
+  UserUpdateInput: NexusGenInputs["UserUpdateInput"];
+  UserUpdateManyMutationInput: NexusGenInputs["UserUpdateManyMutationInput"];
+  UserWhereInput: NexusGenInputs["UserWhereInput"];
+  UserWhereUniqueInput: NexusGenInputs["UserWhereUniqueInput"];
+  String: NexusGenScalars["String"];
+  Int: NexusGenScalars["Int"];
+  Float: NexusGenScalars["Float"];
+  Boolean: NexusGenScalars["Boolean"];
+  ID: NexusGenScalars["ID"];
 }
 
 export interface NexusGenFieldTypes {
-  Query: { // field return type
-    allUsers: NexusGenRootTypes['User'][]; // [User!]!
-    user: NexusGenRootTypes['User'] | null; // User
-    users: NexusGenRootTypes['User'][]; // [User!]!
-  }
-  User: { // field return type
+  BatchPayload: {
+    // field return type
+    count: number; // Int!
+  };
+  Mutation: {
+    // field return type
+    bigRedButton: string; // String!
+    createOneUser: NexusGenRootTypes["User"]; // User!
+    deleteManyUser: NexusGenRootTypes["BatchPayload"]; // BatchPayload!
+    deleteOneUser: NexusGenRootTypes["User"] | null; // User
+    updateManyUser: NexusGenRootTypes["BatchPayload"]; // BatchPayload!
+    updateOneUser: NexusGenRootTypes["User"] | null; // User
+  };
+  Query: {
+    // field return type
+    allUsers: NexusGenRootTypes["User"][]; // [User!]!
+    user: NexusGenRootTypes["User"] | null; // User
+    users: NexusGenRootTypes["User"][]; // [User!]!
+  };
+  User: {
+    // field return type
     id: string; // String!
     name: string; // String!
-  }
+  };
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    createOneUser: {
+      // args
+      data: NexusGenInputs["UserCreateInput"]; // UserCreateInput!
+    };
+    deleteManyUser: {
+      // args
+      where?: NexusGenInputs["UserWhereInput"] | null; // UserWhereInput
+    };
+    deleteOneUser: {
+      // args
+      where: NexusGenInputs["UserWhereUniqueInput"]; // UserWhereUniqueInput!
+    };
+    updateManyUser: {
+      // args
+      data: NexusGenInputs["UserUpdateManyMutationInput"]; // UserUpdateManyMutationInput!
+      where?: NexusGenInputs["UserWhereInput"] | null; // UserWhereInput
+    };
+    updateOneUser: {
+      // args
+      data: NexusGenInputs["UserUpdateInput"]; // UserUpdateInput!
+      where: NexusGenInputs["UserWhereUniqueInput"]; // UserWhereUniqueInput!
+    };
+  };
   Query: {
-    user: { // args
-      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
-    }
-    users: { // args
-      after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    user: {
+      // args
+      where: NexusGenInputs["UserWhereUniqueInput"]; // UserWhereUniqueInput!
+    };
+    users: {
+      // args
+      after?: NexusGenInputs["UserWhereUniqueInput"] | null; // UserWhereUniqueInput
+      before?: NexusGenInputs["UserWhereUniqueInput"] | null; // UserWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
-    }
-  }
+    };
+  };
 }
 
-export interface NexusGenAbstractResolveReturnTypes {
-}
+export interface NexusGenAbstractResolveReturnTypes {}
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Query" | "User";
+export type NexusGenObjectNames =
+  | "BatchPayload"
+  | "Mutation"
+  | "Query"
+  | "User";
 
-export type NexusGenInputNames = "UserWhereUniqueInput";
+export type NexusGenInputNames =
+  | "NestedStringFilter"
+  | "StringFieldUpdateOperationsInput"
+  | "StringFilter"
+  | "UserCreateInput"
+  | "UserUpdateInput"
+  | "UserUpdateManyMutationInput"
+  | "UserWhereInput"
+  | "UserWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 
@@ -109,19 +227,28 @@ export interface NexusGenTypes {
   interfaceNames: NexusGenInterfaceNames;
   scalarNames: NexusGenScalarNames;
   unionNames: NexusGenUnionNames;
-  allInputTypes: NexusGenTypes['inputNames'] | NexusGenTypes['enumNames'] | NexusGenTypes['scalarNames'];
-  allOutputTypes: NexusGenTypes['objectNames'] | NexusGenTypes['enumNames'] | NexusGenTypes['unionNames'] | NexusGenTypes['interfaceNames'] | NexusGenTypes['scalarNames'];
-  allNamedTypes: NexusGenTypes['allInputTypes'] | NexusGenTypes['allOutputTypes']
-  abstractTypes: NexusGenTypes['interfaceNames'] | NexusGenTypes['unionNames'];
+  allInputTypes:
+    | NexusGenTypes["inputNames"]
+    | NexusGenTypes["enumNames"]
+    | NexusGenTypes["scalarNames"];
+  allOutputTypes:
+    | NexusGenTypes["objectNames"]
+    | NexusGenTypes["enumNames"]
+    | NexusGenTypes["unionNames"]
+    | NexusGenTypes["interfaceNames"]
+    | NexusGenTypes["scalarNames"];
+  allNamedTypes:
+    | NexusGenTypes["allInputTypes"]
+    | NexusGenTypes["allOutputTypes"];
+  abstractTypes: NexusGenTypes["interfaceNames"] | NexusGenTypes["unionNames"];
   abstractResolveReturn: NexusGenAbstractResolveReturnTypes;
 }
 
-
 declare global {
-  interface NexusGenPluginTypeConfig<TypeName extends string> {
-  }
-  interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {
-  }
-  interface NexusGenPluginSchemaConfig {
-  }
+  interface NexusGenPluginTypeConfig<TypeName extends string> {}
+  interface NexusGenPluginFieldConfig<
+    TypeName extends string,
+    FieldName extends string
+  > {}
+  interface NexusGenPluginSchemaConfig {}
 }

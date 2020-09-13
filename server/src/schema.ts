@@ -24,4 +24,5 @@ export const schema = makeSchema({
       },
     ],
   },
+  prettierConfig: require.resolve('../package.json'),
 })
